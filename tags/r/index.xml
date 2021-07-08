@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>r on xiongfeng chen | 笔记</title>
+    <link>/tags/r/</link>
+    <description>Recent content in r on xiongfeng chen | 笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 08 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ggplot图 P 值格式化</title>
+      <link>/post/2021-07-08-format-p-value-for-ggplot/</link>
+      <pubDate>Thu, 08 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2021-07-08-format-p-value-for-ggplot/</guid>
+      <description>ggpubr 包 stat_compare_means() 函数常用于对 ggplot图形添加统计比较结果方法，下面介绍 如何对其展示的P值进行格式化。 library(ggpubr) #&amp;gt; Warning: 程辑包&amp;#39;ggpubr&amp;#39;是</description>
+    </item>
+    
+    <item>
+      <title>RStudio v1.4 正式发布，有哪些新特性？</title>
+      <link>/post/2021-01-20-rstudio-v1_4/</link>
+      <pubDate>Wed, 20 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2021-01-20-rstudio-v1_4/</guid>
+      <description>RStudio 团队昨天正式发布了新的版本 v1.4。 本次更新引入了非常多新的特性： 可视化 Markdown 编辑器支持。A visual markdown editor that provides improved productivity for composing longer-form articles and analyses with R Markdown. 新的 Python 支持能力。 New</description>
+    </item>
+    
+  </channel>
+</rss>

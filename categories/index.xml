@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on xiongfeng chen | 笔记</title>
+    <link>/categories/</link>
+    <description>Recent content in Categories on xiongfeng chen | 笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 08 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NLP</title>
+      <link>/categories/nlp/</link>
+      <pubDate>Thu, 08 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/nlp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>r</title>
+      <link>/categories/r/</link>
+      <pubDate>Thu, 08 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>研究思路</title>
+      <link>/categories/%E7%A0%94%E7%A9%B6%E6%80%9D%E8%B7%AF/</link>
+      <pubDate>Thu, 08 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/%E7%A0%94%E7%A9%B6%E6%80%9D%E8%B7%AF/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>golang</title>
+      <link>/categories/golang/</link>
+      <pubDate>Fri, 12 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>config</title>
+      <link>/categories/config/</link>
+      <pubDate>Wed, 20 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/config/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

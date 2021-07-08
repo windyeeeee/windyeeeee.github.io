@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>r on xiongfeng chen | 笔记</title>
+    <link>/categories/r/</link>
+    <description>Recent content in r on xiongfeng chen | 笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 08 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ggplot图 P 值格式化</title>
+      <link>/post/2021-07-08-format-p-value-for-ggplot/</link>
+      <pubDate>Thu, 08 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2021-07-08-format-p-value-for-ggplot/</guid>
+      <description>ggpubr 包 stat_compare_means() 函数常用于对 ggplot图形添加统计比较结果方法，下面介绍 如何对其展示的P值进行格式化。 library(ggpubr) #&amp;gt; Warning: 程辑包&amp;#39;ggpubr&amp;#39;是</description>
+    </item>
+    
+    <item>
+      <title>R包开发</title>
+      <link>/post/2021-07-08-r-r%E5%8C%85%E5%BC%80%E5%8F%91/</link>
+      <pubDate>Thu, 08 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2021-07-08-r-r%E5%8C%85%E5%BC%80%E5%8F%91/</guid>
+      <description>R包开发 创建R包基本流程： 开发工具：devtools 运行调试 + usethis 创建修改 基本流程： create_package 创建一个R包 use_r()写函数,插入roxygen注释</description>
+    </item>
+    
+    <item>
+      <title>从斐波那契数列生成来看算法和 Rcpp 的效率</title>
+      <link>/art/2021-03-14-rcpp-intro/</link>
+      <pubDate>Sun, 14 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/art/2021-03-14-rcpp-intro/</guid>
+      <description>学习材料：《Rcpp：R与C++的无缝整合》 斐波那契数列指的是每一项都等于前两项之和的数列，定义为 F[1]=1 F[2]=1 F[n]=F[n-1]+F[n-2]（</description>
+    </item>
+    
+    <item>
+      <title>从斐波那契数列生成来看算法和 Rcpp 的效率</title>
+      <link>/post/2021-03-14-rcpp-intro/</link>
+      <pubDate>Sun, 14 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2021-03-14-rcpp-intro/</guid>
+      <description>学习材料：《Rcpp：R与C++的无缝整合》 斐波那契数列指的是每一项都等于前两项之和的数列，定义为 F[1]=1 F[2]=1 F[n]=F[n-1]+F[n-2]（</description>
+    </item>
+    
+    <item>
+      <title>dplyr 列式计算</title>
+      <link>/post/2021-01-22-dplyr-colwise/</link>
+      <pubDate>Fri, 22 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2021-01-22-dplyr-colwise/</guid>
+      <description>在近期使用 dplyr 进行多列选择性操作，如 mutate_at() 时，发现文档提示一系列的 dplyr 函数变体已经过期，看来后续要退休了，使用 across() 是它们的统一替代品，所以最近抽时间针</description>
+    </item>
+    
+    <item>
+      <title>dplyr 行式计算</title>
+      <link>/post/2021-01-22-dplyr-rowwise/</link>
+      <pubDate>Fri, 22 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2021-01-22-dplyr-rowwise/</guid>
+      <description>原文来自：dplyr 文档 通常 dplyr 和 R 更适合对列进行操作，而对行操作则显得更麻烦。这篇文章，我们将学习围绕rowwise() 创建的 row-wise 数据框的 dplyr 操</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>About on xiongfeng chen | 笔记</title>
+    <link>/</link>
+    <description>Recent content in About on xiongfeng chen | 笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 07 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ggplot图 P 值格式化</title>
+      <link>/post/2021-07-08-format-p-value-for-ggplot/</link>
+      <pubDate>Thu, 08 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2021-07-08-format-p-value-for-ggplot/</guid>
+      <description>ggpubr 包 stat_compare_means() 函数常用于对 ggplot图形添加统计比较结果方法，下面介绍 如何对其展示的P值进行格式化。 library(ggpubr) #&amp;gt; Warning: 程辑包&amp;#39;ggpubr&amp;#39;是</description>
+    </item>
+    
+    <item>
+      <title>R包开发</title>
+      <link>/post/2021-07-08-r-r%E5%8C%85%E5%BC%80%E5%8F%91/</link>
+      <pubDate>Thu, 08 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2021-07-08-r-r%E5%8C%85%E5%BC%80%E5%8F%91/</guid>
+      <description>R包开发 创建R包基本流程： 开发工具：devtools 运行调试 + usethis 创建修改 基本流程： create_package 创建一个R包 use_r()写函数,插入roxygen注释</description>
+    </item>
+    
+    <item>
+      <title>世界</title>
+      <link>/thinking/2021-07-08-%E4%B8%96%E7%95%8C/</link>
+      <pubDate>Thu, 08 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/thinking/2021-07-08-%E4%B8%96%E7%95%8C/</guid>
+      <description>eQTL计算原理 全基因组关联分析（GWAS） 定义：对于多个个体在全基因组范围的遗传变异多态性（SNP）进行检测，获得基因型，将基因型与表型进</description>
+    </item>
+    
+    <item>
+      <title>思路1：</title>
+      <link>/research/2021-07-08-%E6%80%9D%E8%B7%AF1/</link>
+      <pubDate>Thu, 08 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/research/2021-07-08-%E6%80%9D%E8%B7%AF1/</guid>
+      <description>eQTL计算原理 全基因组关联分析（GWAS） 定义：对于多个个体在全基因组范围的遗传变异多态性（SNP）进行检测，获得基因型，将基因型与表型进</description>
+    </item>
+    
+    <item>
+      <title>从斐波那契数列生成来看算法和 Rcpp 的效率</title>
+      <link>/art/2021-03-14-rcpp-intro/</link>
+      <pubDate>Sun, 14 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/art/2021-03-14-rcpp-intro/</guid>
+      <description>学习材料：《Rcpp：R与C++的无缝整合》 斐波那契数列指的是每一项都等于前两项之和的数列，定义为 F[1]=1 F[2]=1 F[n]=F[n-1]+F[n-2]（</description>
+    </item>
+    
+    <item>
+      <title>从斐波那契数列生成来看算法和 Rcpp 的效率</title>
+      <link>/post/2021-03-14-rcpp-intro/</link>
+      <pubDate>Sun, 14 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2021-03-14-rcpp-intro/</guid>
+      <description>学习材料：《Rcpp：R与C++的无缝整合》 斐波那契数列指的是每一项都等于前两项之和的数列，定义为 F[1]=1 F[2]=1 F[n]=F[n-1]+F[n-2]（</description>
+    </item>
+    
+    <item>
+      <title>godoc 查看函数文档和源代码</title>
+      <link>/post/2021-03-12-use-godoc/</link>
+      <pubDate>Fri, 12 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2021-03-12-use-godoc/</guid>
+      <description>这个非常有意思，感觉和 R 的文档查看和使用完全是不一样的风格。 $ go doc runtime NumCPU $ go doc -src runtime NumCPU 查看效果： ▶ go doc runtime NumCPU package runtime // import &amp;#34;runtime&amp;#34; func NumCPU() int NumCPU returns the number of logical CPUs usable by the current</description>
+    </item>
+    
+    <item>
+      <title>dplyr 列式计算</title>
+      <link>/post/2021-01-22-dplyr-colwise/</link>
+      <pubDate>Fri, 22 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2021-01-22-dplyr-colwise/</guid>
+      <description>在近期使用 dplyr 进行多列选择性操作，如 mutate_at() 时，发现文档提示一系列的 dplyr 函数变体已经过期，看来后续要退休了，使用 across() 是它们的统一替代品，所以最近抽时间针</description>
+    </item>
+    
+    <item>
+      <title>dplyr 行式计算</title>
+      <link>/post/2021-01-22-dplyr-rowwise/</link>
+      <pubDate>Fri, 22 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2021-01-22-dplyr-rowwise/</guid>
+      <description>原文来自：dplyr 文档 通常 dplyr 和 R 更适合对列进行操作，而对行操作则显得更麻烦。这篇文章，我们将学习围绕rowwise() 创建的 row-wise 数据框的 dplyr 操</description>
+    </item>
+    
+    <item>
+      <title>RStudio v1.4 正式发布，有哪些新特性？</title>
+      <link>/post/2021-01-20-rstudio-v1_4/</link>
+      <pubDate>Wed, 20 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2021-01-20-rstudio-v1_4/</guid>
+      <description>RStudio 团队昨天正式发布了新的版本 v1.4。 本次更新引入了非常多新的特性： 可视化 Markdown 编辑器支持。A visual markdown editor that provides improved productivity for composing longer-form articles and analyses with R Markdown. 新的 Python 支持能力。 New</description>
+    </item>
+    
+    <item>
+      <title>3 步免费使用 Jetbrains 产品</title>
+      <link>/post/2021-01-14-use-jetbrains/</link>
+      <pubDate>Thu, 14 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2021-01-14-use-jetbrains/</guid>
+      <description>下载任意的 JB 产品：https://www.jetbrains.com/ 下载 https://gitee.com/ShixiangWang/ide-eval-resetter 重置插件更新 根据文章 https://zhile.io/2020/11/18/jetbrains-eval-reset.html 进行配置</description>
+    </item>
+    
+    <item>
+      <title>《Mastering Go》第一章笔记</title>
+      <link>/art/mastering-go-book-chapter-01/</link>
+      <pubDate>Mon, 03 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/art/mastering-go-book-chapter-01/</guid>
+      <description>godoc 使用 go doc fmt.Printf go doc fmt # Open a Go doc server godoc -http=:8001 运行和编译 go 代码 package main import &amp;#34;fmt&amp;#34; func main() { fmt.Println(&amp;#34;This is a sample Go program!&amp;#34;) } 使用 go run filename 运行代码文件；使用 go buils filename 编译 go 代码形成可执行文件。 下</description>
+    </item>
+    
+    <item>
+      <title>简历</title>
+      <link>/cv-cn/shixiang/</link>
+      <pubDate>Thu, 30 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/cv-cn/shixiang/</guid>
+      <description>王诗翔 地址：上海市浦东新区上海科技大学生命学院L楼A406 工作邮箱：wangshx@shanghaitech.edu.cn 个人邮箱：w_sh</description>
+    </item>
+    
+  </channel>
+</rss>

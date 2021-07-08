@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    
+    <link rel="stylesheet" href="../../fonts/academicons-1.8.6/css/academicons.min.css"/>
+    <link rel="icon" type="image/png" sizes="32x32" href="../../logo/bodhi.png"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    
+    
+    <title>ggplot图 P 值格式化 - </title>
+    
+     
+    <meta property="og:title" content="ggplot图 P 值格式化 - xiongfeng chen | 笔记">
+    
+
+    
+      
+    
+
+    
+
+    
+    
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.12.0/styles/Xcode.min.css' rel='stylesheet' type='text/css' />
+
+
+
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/mystyle.css" /> 
+    <link rel="stylesheet" href="../../css/fonts.css" />
+    
+<link rel="stylesheet" href="../../css/custom.css" />
+
+  </head>
+  
+  <body class="post">
+    <header class="masthead">
+      
+
+<h1><a href="../../logo/cxf.png"><img src="../../logo/cxf.png" alt="xiongfeng chen" /></a></h1>
+<p align="right" style="margin-top:-50px;"><small>><i>上士闻道<br>勤而行之</i></small></p>
+
+
+
+
+      <nav class="menu">
+        <input id="menu-check" type="checkbox" />
+        <label id="menu-label" for="menu-check" class="unselectable">
+          <span class="icon close-icon">✕</span>
+          <span class="icon open-icon">☰</span>
+          <span class="text">Menu</span>
+        </label>
+        <ul>
+        
+        
+        <li><a href="../../">首页</a></li>
+        
+        <li><a href="../../about">关于博主</a></li>
+        
+        <li><a href="../../thinking/">强者思想</a></li>
+        
+        <li><a href="../../post/">生信笔记</a></li>
+        
+        <li><a href="../../art/">插图艺术</a></li>
+        
+        <li><a href="../../research/">主题思路</a></li>
+        
+        <li><a href="tools/">常用工具</a></li>
+        
+        <li><a href="../../logo/qrcode.jpg">公众号</a></li>
+        
+        <li><a href="../../categories/">分类</a></li>
+        
+        <li><a href="../../tags/">标签</a></li>
+        
+        
+
+<li class="menu-extra"></li>
+
+
+
+
+
+
+<li><a href="https://gitee.com/xiongfengchen/home/edit/master/content/post/2021-07-08-format-p-value-for-ggplot.Rmd" target="_blank">Edit Me</a></li>
+
+
+<li><a href="../../post/index.xml" type="application/rss+xml" title="RSS feed">Subscribe</a></li>
+
+<li><a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Attribution-NonCommercial-ShareAlike 4.0 International">License</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <article class="main">
+      <header class="title">
+        
+
+<h1>ggplot图 P 值格式化</h1>
+
+
+
+<h3>陈雄峰 &middot 
+2021-07-08</h3> 
+
+
+<p style="text-align:right;">
+  :
+  
+    <a href="../../categories/r">R</a> &nbsp
+  
+  <br>
+  :
+  
+    <a href="../../tags/r">R</a> &nbsp
+  
+    <a href="../../tags/ggplot2">ggplot2</a> &nbsp
+  
+</p>
+
+
+
+   
+  
+
+
+      </header>
+
+
+
+<script src="../../rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<p><strong>ggpubr</strong> 包 <code>stat_compare_means()</code> 函数常用于对 ggplot图形添加统计比较结果方法，下面介绍
+如何对其展示的P值进行格式化。</p>
+<pre class="r"><code>library(ggpubr)
+#&gt; Warning: 程辑包&#39;ggpubr&#39;是用R版本4.0.5 来建造的
+#&gt; 载入需要的程辑包：ggplot2
+data(&quot;ToothGrowth&quot;)
+head(ToothGrowth)
+#&gt;    len supp dose
+#&gt; 1  4.2   VC  0.5
+#&gt; 2 11.5   VC  0.5
+#&gt; 3  7.3   VC  0.5
+#&gt; 4  5.8   VC  0.5
+#&gt; 5  6.4   VC  0.5
+#&gt; 6 10.0   VC  0.5
+
+# Two independent groups
+#:::::::::::::::::::::::::::::::::::::::::::::::::
+p &lt;- ggboxplot(ToothGrowth, x = &quot;supp&quot;, y = &quot;len&quot;,
+               color = &quot;supp&quot;, palette = &quot;npg&quot;, add = &quot;jitter&quot;)
+
+#  Add p-value
+p + stat_compare_means()</code></pre>
+<p><img src="../../post/2021-07-08-format-p-value-for-ggplot_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>可以看到图中是以检验方法+P值的结果来展示 P 值的，那么该如何修改它呢？关键是修改函数中的 <code>label</code> 参数和掌握匿名变量 <code>..p.format..</code>，下面是一个简单的修改：</p>
+<pre class="r"><code>p + stat_compare_means(aes(label = paste0(&quot;P = &quot;, round(as.numeric(..p.format..), 2))))</code></pre>
+<p><img src="../../post/2021-07-08-format-p-value-for-ggplot_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>这里需要注意的是 <code>..p.format..</code> 是一个字符串，如果我们需要修改它展示的数值位数，需要先进行转换。</p>
+<p>进一步我们还可以根据运行 <code>?stat_compare_means</code> 提供的说明修改 P 值的位置：</p>
+<pre class="r"><code>p + stat_compare_means(aes(label = paste0(&quot;P = &quot;, round(as.numeric(..p.format..), 2))),
+                       label.y = 33, label.x = 1.5)</code></pre>
+<p><img src="../../post/2021-07-08-format-p-value-for-ggplot_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>大家可以想一下为什么 <code>label.x = 1.5</code> 可以将标签移动到两组的中间？</p>
+
+
+  <footer>
+  
+<nav class="post-nav">
+  <span class="nav-prev">&larr; <a href="../../post/2021-07-08-r-r%E5%8C%85%E5%BC%80%E5%8F%91/">R包开发</a></span>
+  <span class="nav-next"></span>
+</nav>
+<script type="text/javascript">
+document.addEventListener('keyup', function(e) {
+  if (e.target.nodeName.toUpperCase() != 'BODY') return;
+  var url = false;
+  if (e.which == 37) {  
+    
+    url = '\/post\/2021-07-08-r-r%E5%8C%85%E5%BC%80%E5%8F%91\/';
+    
+  } else if (e.which == 39) {  
+    
+  }
+  if (url) window.location = url;
+});
+</script>
+
+
+
+
+
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<script>
+  const gitalk = new Gitalk({
+    clientID: 'eed477936be7b88a8455',
+    clientSecret: '32b5dde22f3c95c4fad400a31632e34221b07e83',
+    repo: 'home',
+    owner: 'xiongfeng chen',
+    admin: ['xiongfeng chen'],
+    id: md5(window.location.pathname), 
+    distractionFreeMode: false 
+  });
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('gitalk-container').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
+      return;
+    }
+    gitalk.render('gitalk-container');
+  })();
+</script>
+
+
+
+
+
+<script async src="../../js/fix-toc.js"></script>
+
+<script async src="../../js/center-img.js"></script>
+
+<script async src="../../js/right-quote.js"></script>
+
+<script async src="../../js/no-highlight.js"></script>
+
+<script async src="../../js/fix-footnote.js"></script>
+
+<script async src="../../js/math-code.js"></script>
+
+<script async src="../../js/external-link.js"></script>
+
+<script async src="../../js/alt-title.js"></script>
+
+<script async src="../../js/header-link.js"></script>
+
+
+<script src="//yihui.org/js/math-code.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script async src="//yihui.org/js/center-img.js"></script>
+
+  
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/tex.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+
+  
+  
+  
+  
+
+  <script type="text/javascript" src="//rf.revolvermaps.com/0/0/6.js?i=56h9es09xn7&amp;m=6&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=1" async="async"></script>
+  </footer>
+  </article>
+  
+  </body>
+</html>
+

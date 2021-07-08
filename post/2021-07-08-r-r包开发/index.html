@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    
+    <link rel="stylesheet" href="../../fonts/academicons-1.8.6/css/academicons.min.css"/>
+    <link rel="icon" type="image/png" sizes="32x32" href="../../logo/bodhi.png"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    
+    
+    <title>R包开发 - </title>
+    
+     
+    <meta property="og:title" content="R包开发 - xiongfeng chen | 笔记">
+    
+
+    
+      
+    
+
+    
+
+    
+    
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.12.0/styles/Xcode.min.css' rel='stylesheet' type='text/css' />
+
+
+
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/mystyle.css" /> 
+    <link rel="stylesheet" href="../../css/fonts.css" />
+    
+<link rel="stylesheet" href="../../css/custom.css" />
+
+  </head>
+  
+  <body class="post">
+    <header class="masthead">
+      
+
+<h1><a href="../../logo/cxf.png"><img src="../../logo/cxf.png" alt="xiongfeng chen" /></a></h1>
+<p align="right" style="margin-top:-50px;"><small>><i>上士闻道<br>勤而行之</i></small></p>
+
+
+
+
+      <nav class="menu">
+        <input id="menu-check" type="checkbox" />
+        <label id="menu-label" for="menu-check" class="unselectable">
+          <span class="icon close-icon">✕</span>
+          <span class="icon open-icon">☰</span>
+          <span class="text">Menu</span>
+        </label>
+        <ul>
+        
+        
+        <li><a href="../../">首页</a></li>
+        
+        <li><a href="../../about">关于博主</a></li>
+        
+        <li><a href="../../thinking/">强者思想</a></li>
+        
+        <li><a href="../../post/">生信笔记</a></li>
+        
+        <li><a href="../../art/">插图艺术</a></li>
+        
+        <li><a href="../../research/">主题思路</a></li>
+        
+        <li><a href="tools/">常用工具</a></li>
+        
+        <li><a href="../../logo/qrcode.jpg">公众号</a></li>
+        
+        <li><a href="../../categories/">分类</a></li>
+        
+        <li><a href="../../tags/">标签</a></li>
+        
+        
+
+<li class="menu-extra"></li>
+
+
+
+<li><a href="https://gitee.com/xiongfengchen/home/edit/master/content/post%5c2021-07-08-R-R%e5%8c%85%e5%bc%80%e5%8f%91.md" target="_blank">Edit Me</a></li>
+
+
+<li><a href="../../post/index.xml" type="application/rss+xml" title="RSS feed">Subscribe</a></li>
+
+<li><a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Attribution-NonCommercial-ShareAlike 4.0 International">License</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <article class="main">
+      <header class="title">
+        
+
+<h1>R包开发</h1>
+
+
+
+<h3>陈雄峰 &middot 
+2021-07-08</h3> 
+
+
+<p style="text-align:right;">
+  :
+  
+    <a href="../../categories/r">R</a> &nbsp
+  
+  <br>
+  :
+  
+    <a href="../../tags/r%E5%8C%85%E5%BC%80%E5%8F%91">R包开发</a> &nbsp
+  
+</p>
+
+
+
+   
+  
+
+
+      </header>
+
+
+<h1 id="r包开发">R包开发</h1>
+<p>创建R包基本流程：</p>
+<p>开发工具：<code>devtools</code> 运行调试 +  <code>usethis</code> 创建修改</p>
+<p>基本流程：</p>
+<ul>
+<li><code>create_package</code> 创建一个R包</li>
+<li><code>use_r()</code>写函数,插入roxygen注释和tag，使用<code>document()</code>生成文档</li>
+<li><code>load_all()</code>载入包</li>
+<li><code>use_***_license</code> 添加license</li>
+<li><code>install</code>安装包</li>
+<li><code>use_testthat()</code> 和<code>use_test()</code>生成测试文件；<code>test()</code>进行测试</li>
+<li><code>check</code>对整个包进行检查</li>
+<li><code>use_readme_rmd()</code>和<code>build_readme()</code>生成<code>readme</code>文件</li>
+</ul>
+<p>开发工具：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">install.packages</span>(<span style="color:#e6db74">&#34;devtools&#34;</span>)
+<span style="color:#a6e22e">library</span>(devtools)
+<span style="color:#a6e22e">library</span>(usethis)
+</code></pre></div><p>初始化package项目: <code>create_package()</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">usethis<span style="color:#f92672">::</span><span style="color:#a6e22e">create_package</span>(<span style="color:#e6db74">&#34;~/toypackages&#34;</span>)
+</code></pre></div><p>创建函数：<code>usethis::use_r()</code> -&gt;  <code>R/*.R</code> -&gt; 添加R函数脚本(合并因子)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">usethis<span style="color:#f92672">::</span><span style="color:#a6e22e">use_r</span>(<span style="color:#e6db74">&#34;fbind&#34;</span>)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">fbind <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(a, b) {
+  <span style="color:#a6e22e">factor</span>(<span style="color:#a6e22e">c</span>(<span style="color:#a6e22e">as.character</span>(a), <span style="color:#a6e22e">as.character</span>(b)))
+}
+</code></pre></div><p>交互载入验证:<code>devtools::load_all()</code>   快捷键：Ctrl + Shift + L -&gt; <code>man</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">devtools<span style="color:#f92672">::</span><span style="color:#a6e22e">load_all</span>()
+a <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">factor</span>(<span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;character&#34;</span>, <span style="color:#e6db74">&#34;hits&#34;</span>, <span style="color:#e6db74">&#34;your&#34;</span>, <span style="color:#e6db74">&#34;eyeballs&#34;</span>))
+b <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">factor</span>(<span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;but&#34;</span>, <span style="color:#e6db74">&#34;integer&#34;</span>, <span style="color:#e6db74">&#34;where it&#34;</span>, <span style="color:#e6db74">&#34;counts&#34;</span>))
+<span style="color:#a6e22e">fbind</span>(a,b)
+</code></pre></div><p>自动检查包：<code>devtools::check()</code>	快捷键：Ctrl + Shift + E</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">devtools<span style="color:#f92672">::</span><span style="color:#a6e22e">check</span>()
+</code></pre></div><p>添加license:  修改<code>DESCRIPTION</code>文件   -&gt;  metadata (作者/包名称 /简介等)</p>
+<pre><code>                    `use_mit_license()`   -&gt; `MIT` license
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">usethis<span style="color:#f92672">::</span><span style="color:#a6e22e">use_mit_license</span>(<span style="color:#e6db74">&#34;xiongfeng chen&#34;</span>)
+</code></pre></div><p>添加函数帮助文档：</p>
+<p><code>man/*.Rd</code>  &lt;-  <code>roxygen2</code>包生成</p>
+<p><code>fbind.R</code> -&gt; <code>Code&gt;Insert roxygen skeleton</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#75715e">#&#39; @examples</span>
+<span style="color:#75715e">#&#39; fbind(iris$Species[c(1, 51, 101)], PlantGrowth$group[c(1, 11, 21)])</span>
+fbind <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(a, b) {
+  <span style="color:#a6e22e">factor</span>(<span style="color:#a6e22e">c</span>(<span style="color:#a6e22e">as.character</span>(a), <span style="color:#a6e22e">as.character</span>(b)))
+}
+</code></pre></div><p>生成<code>man/fbind.Rd</code>文件：<code>document()</code> 	快捷键：Ctrl + Shift + D</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">document</span>()
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#f92672">?</span>fbind
+</code></pre></div><p>生成包：<code>install（）</code>  -&gt; toypackages_0.0.0.9000.tar.gz</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">install</span>()
+</code></pre></div><p>测试包:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">library</span>(toypackage)
+a <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">factor</span>(<span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;character&#34;</span>, <span style="color:#e6db74">&#34;hits&#34;</span>, <span style="color:#e6db74">&#34;your&#34;</span>, <span style="color:#e6db74">&#34;eyeballs&#34;</span>))
+b <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">factor</span>(<span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;but&#34;</span>, <span style="color:#e6db74">&#34;integer&#34;</span>, <span style="color:#e6db74">&#34;where it&#34;</span>, <span style="color:#e6db74">&#34;counts&#34;</span>))
+<span style="color:#a6e22e">fbind</span>(a, b)
+</code></pre></div><p>规范测试:</p>
+<p><code>use_testthat()</code>  -&gt; <code>DESCRIPTION</code>文件加入<code>suggests:testthat</code>:</p>
+<pre><code>                                 -&gt; 创建tests/testthat`文件夹，并生成`testthat.R`文件
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">library</span>(devtools)
+<span style="color:#a6e22e">use_testthat</span>()
+</code></pre></div><p>创建测试文件：<code>use_test()</code> -&gt; 生成<code>tests/testthat/test-fbind.R</code>文件</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">use_test</span>(<span style="color:#e6db74">&#34;fbind&#34;</span>)
+</code></pre></div><p>修改测试内容: <code>expect_*fun()</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">test_that</span>(<span style="color:#e6db74">&#34;fbind() binds factor (or character)&#34;</span>, {
+  x <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>)
+  x_fact <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">factor</span>(x)
+  y <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;c&#34;</span>, <span style="color:#e6db74">&#34;d&#34;</span>)
+  z <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">factor</span>(<span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>, <span style="color:#e6db74">&#34;c&#34;</span>, <span style="color:#e6db74">&#34;d&#34;</span>))
+
+  <span style="color:#a6e22e">expect_identical</span>(<span style="color:#a6e22e">fbind</span>(x, y), z)
+  <span style="color:#a6e22e">expect_identical</span>(<span style="color:#a6e22e">fbind</span>(x_fact, y), z)
+})
+</code></pre></div><p>进行测试：<code>test()</code>	快捷键:Ctrl + Shift + T</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">test</span>()
+</code></pre></div><p>调用其他包函数: <code>use_package()</code></p>
+<pre><code>                        -&gt; `DESCRIPTION`文件添加 `Imports::forcats`
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">use_package</span>(<span style="color:#e6db74">&#34;forcats&#34;</span>)
+</code></pre></div><p>R包<code>readme</code>说明文件：<code>use_readme_rmd()</code> + <code>build_readme()</code></p>
+<p>创建数据：<code>usthis::use_data()</code>   - &gt;  &lsquo;data/x.rda&rsquo; / &lsquo;data/mtcars.rda&rsquo;</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">x <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">sample</span>(<span style="color:#ae81ff">1000</span>)
+usethis<span style="color:#f92672">::</span><span style="color:#a6e22e">use_data</span>(x, mtcars，`internal = TRUE`）
+</code></pre></div><p>保留原始数据：<code>usethis::use_data_raw()</code>  -&gt; <code>data-raw</code>和<code>DATASET.R</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">usethis<span style="color:#f92672">::</span><span style="color:#a6e22e">use_data_raw</span>()
+</code></pre></div><p>数据文档说明：R/data.R</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e">#&#39; Prices of 50,000 round cut diamonds.</span>
+<span style="color:#75715e">#&#39;</span>
+<span style="color:#75715e">#&#39; A dataset containing the prices and other attributes of almost 54,000</span>
+<span style="color:#75715e">#&#39; diamonds.</span>
+<span style="color:#75715e">#&#39;</span>
+<span style="color:#75715e">#&#39; @format A data frame with 53940 rows and 10 variables:</span>
+<span style="color:#75715e">#&#39; \describe{</span>
+<span style="color:#75715e">#&#39;   \item{price}{price, in US dollars}</span>
+<span style="color:#75715e">#&#39;   \item{carat}{weight of the diamond, in carats}</span>
+<span style="color:#75715e">#&#39;   ...</span>
+<span style="color:#75715e">#&#39; }</span>
+<span style="color:#75715e">#&#39; @source \url{http://www.diamondse.info/}</span>
+<span style="color:#e6db74">&#34;diamonds&#34;</span>
+</code></pre></div><p>包文档说明：		&lt;-<code>package?dplyr</code>调出</p>
+<p>创建包：<code>usethis::create_package(path)</code></p>
+<pre><code>            工作路径最好是源码包的top-level
+</code></pre>
+<p>参考：</p>
+<p><a href="https://r-pkgs.org/index.html">R packages 2nd edition</a></p>
+<p><a href="https://rawgit.com/rstudio/cheatsheets/master/package-development.pdf">cheatsheet</a></p>
+<p><style>
+  .img-container {
+    text-align: center;
+    display: block;
+  }
+</style>
+
+  <img src="https://picgo-wutao.oss-cn-shanghai.aliyuncs.com/img/image-20200916155008545.png" alt="image-20200916155008545">
+  </span>
+</p>
+
+
+  <footer>
+  
+<nav class="post-nav">
+  <span class="nav-prev">&larr; <a href="../../post/2021-03-14-rcpp-intro/">从斐波那契数列生成来看算法和 Rcpp 的效率</a></span>
+  <span class="nav-next"><a href="../../post/2021-07-08-format-p-value-for-ggplot/">ggplot图 P 值格式化</a> &rarr;</span>
+</nav>
+<script type="text/javascript">
+document.addEventListener('keyup', function(e) {
+  if (e.target.nodeName.toUpperCase() != 'BODY') return;
+  var url = false;
+  if (e.which == 37) {  
+    
+    url = '\/post\/2021-03-14-rcpp-intro\/';
+    
+  } else if (e.which == 39) {  
+    
+    url = '\/post\/2021-07-08-format-p-value-for-ggplot\/';
+    
+  }
+  if (url) window.location = url;
+});
+</script>
+
+
+
+
+
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<script>
+  const gitalk = new Gitalk({
+    clientID: 'eed477936be7b88a8455',
+    clientSecret: '32b5dde22f3c95c4fad400a31632e34221b07e83',
+    repo: 'home',
+    owner: 'xiongfeng chen',
+    admin: ['xiongfeng chen'],
+    id: md5(window.location.pathname), 
+    distractionFreeMode: false 
+  });
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('gitalk-container').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
+      return;
+    }
+    gitalk.render('gitalk-container');
+  })();
+</script>
+
+
+
+
+
+<script async src="../../js/fix-toc.js"></script>
+
+<script async src="../../js/center-img.js"></script>
+
+<script async src="../../js/right-quote.js"></script>
+
+<script async src="../../js/no-highlight.js"></script>
+
+<script async src="../../js/fix-footnote.js"></script>
+
+<script async src="../../js/math-code.js"></script>
+
+<script async src="../../js/external-link.js"></script>
+
+<script async src="../../js/alt-title.js"></script>
+
+<script async src="../../js/header-link.js"></script>
+
+
+<script src="//yihui.org/js/math-code.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script async src="//yihui.org/js/center-img.js"></script>
+
+  
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/tex.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+
+  
+  
+  
+  
+
+  <script type="text/javascript" src="//rf.revolvermaps.com/0/0/6.js?i=56h9es09xn7&amp;m=6&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=1" async="async"></script>
+  </footer>
+  </article>
+  
+  </body>
+</html>
+

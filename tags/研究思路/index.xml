@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>研究思路 on xiongfeng chen | 笔记</title>
+    <link>/tags/%E7%A0%94%E7%A9%B6%E6%80%9D%E8%B7%AF/</link>
+    <description>Recent content in 研究思路 on xiongfeng chen | 笔记</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 08 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/%E7%A0%94%E7%A9%B6%E6%80%9D%E8%B7%AF/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>思路1：</title>
+      <link>/research/2021-07-08-%E6%80%9D%E8%B7%AF1/</link>
+      <pubDate>Thu, 08 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/research/2021-07-08-%E6%80%9D%E8%B7%AF1/</guid>
+      <description>eQTL计算原理 全基因组关联分析（GWAS） 定义：对于多个个体在全基因组范围的遗传变异多态性（SNP）进行检测，获得基因型，将基因型与表型进</description>
+    </item>
+    
+  </channel>
+</rss>
